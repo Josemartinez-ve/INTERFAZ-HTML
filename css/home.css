@@ -1,0 +1,250 @@
+ body {
+     font-family: Arial, sans-serif;
+     background-color: #eae1d6;
+     min-height: 100vh;
+     margin: 0;
+     padding: 0;
+ }
+
+
+
+
+
+ /* Main content */
+ .main-content {
+     flex-grow: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+
+ /* Hero section */
+ .hero-section {
+     text-align: center;
+     padding: 2.5rem 1rem 3rem;
+ }
+
+ .hero-title {
+     font-size: 2.25rem;
+     font-weight: 800;
+     color: var(--color-heading-light);
+     line-height: 1.2;
+ }
+
+ .hero-highlight {
+     color: var(--color-cta-primary);
+ }
+
+ .hero-description {
+     margin-top: 1.5rem;
+     max-width: 36rem;
+     margin-left: auto;
+     margin-right: auto;
+     font-size: 1.125rem;
+     color: var(--color-text-light);
+ }
+
+ .hero-cta {
+     margin-top: 2rem;
+ }
+
+ .btn-cta {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 1rem 2rem;
+     font-size: 1rem;
+     font-weight: 700;
+     color: white;
+     background-color: var(--color-cta-primary);
+     border: none;
+     border-radius: 9999px;
+     box-shadow: 0 8px 24px var(--color-cta-primary);
+     cursor: pointer;
+     transition: all 0.3s ease;
+ }
+
+ .btn-cta:hover {
+     background-color: var(--color-cta-primary-hover);
+     transform: scale(1.05);
+     box-shadow: 0 8px 24px var(--color-cta-primary);
+
+ }
+
+ .cta-icon {
+     margin-left: 0.5rem;
+     background-color: rgba(255, 255, 255, 0.2);
+     padding: 0.25rem;
+     border-radius: 9999px;
+     font-size: 1rem;
+ }
+
+ /* Image showcase */
+ .image-showcase {
+     margin-top: auto;
+     position: relative;
+     padding-bottom: 2.5rem;
+ }
+
+ .showcase-curve {
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 150%;
+     max-width: 1000px;
+     height: 8rem;
+     background-color: var(--color-background-light);
+     border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+ }
+
+ .showcase-container {
+     position: relative;
+ }
+
+ .showcase-images {
+     display: flex;
+     justify-content: center;
+     align-items: flex-end;
+     gap: 1rem;
+     margin-bottom: -2.5rem;
+ }
+
+ .showcase-image-wrapper {
+     transition: transform 0.3s ease;
+ }
+
+ .image-left {
+     transform: rotate(-6deg);
+     transform-origin: bottom right;
+ }
+
+ .image-right {
+     transform: rotate(6deg);
+     transform-origin: bottom left;
+ }
+
+ .image-center {
+     z-index: 10;
+     margin-bottom: 2rem;
+ }
+
+ .showcase-image {
+     width: 12rem;
+     height: auto;
+     border-radius: var(--radius-lg);
+     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+ }
+
+ .image-center .showcase-image {
+     width: 13rem;
+ }
+
+ /* Responsive styles */
+ @media (min-width: 768px) {
+     .nav-desktop {
+         display: flex;
+     }
+
+     .hero-title {
+         font-size: 3.75rem;
+     }
+
+     .showcase-image {
+         width: 16rem;
+     }
+
+     .image-center .showcase-image {
+         width: 18rem;
+     }
+ }
+
+ @media (min-width: 1024px) {
+     .hero-title {
+         font-size: 4.5rem;
+     }
+
+     .showcase-image {
+         width: 20rem;
+     }
+
+     .image-center .showcase-image {
+         width: 24rem;
+     }
+
+     .showcase-curve {
+         border-radius: var(--radius-xl);
+         background: linear-gradient(180deg, #f5e6e8 0%, #9e9ecf 100%);
+
+     }
+ }
+
+ @media (max-width: 767px) {
+
+     /* 1. Ajustes de Tipografía y Espaciado */
+     .hero-section {
+         padding: 2rem 1rem;
+     }
+
+     .hero-title {
+         font-size: 2rem;
+         /* Reducimos ligeramente el título */
+         padding: 0 0.5rem;
+         /* Margen de seguridad lateral */
+     }
+
+     .hero-description {
+         font-size: 1rem;
+         padding: 0 1rem;
+         /* Evita que el texto toque los bordes */
+     }
+
+     /* 2. Solución para las Imágenes en Pantallas Estrechas */
+     /* Usamos unidades 'vw' (viewport width) en lugar de 'rem' 
+       para que las imágenes se escalen proporcionalmente al ancho del celular.
+    */
+
+     .showcase-images {
+         gap: 0.5rem;
+         /* Reducimos el espacio entre fotos */
+         margin-bottom: -1.5rem;
+         /* Ajustamos la posición respecto a la curva */
+         align-items: flex-end;
+     }
+
+     .showcase-image {
+         /* Las imágenes laterales ocuparán el 28% del ancho de pantalla cada una */
+         width: 28vw;
+         border-radius: 8px;
+         /* Radio un poco menor para pantallas chicas */
+     }
+
+     .image-center .showcase-image {
+         /* La imagen central será un poco más grande (34% del ancho) */
+         width: 34vw;
+     }
+
+     .image-center {
+         /* Reducimos qué tan arriba está la imagen central para mantener la proporción */
+         margin-bottom: 1rem;
+         z-index: 20;
+         /* Asegura que la central esté sobre las otras */
+     }
+
+     /* Reducimos ligeramente la rotación en móviles para ahorrar espacio horizontal */
+     .image-left {
+         transform: rotate(-4deg);
+     }
+
+     .image-right {
+         transform: rotate(4deg);
+     }
+
+     /* 3. Ajuste de la Curva Decorativa */
+     .showcase-curve {
+         height: 4rem;
+         /* Hacemos la curva menos alta */
+         width: 200%;
+         /* La hacemos más ancha para suavizar el arco en pantallas estrechas */
+     }
+ }

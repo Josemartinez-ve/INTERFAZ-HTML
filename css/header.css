@@ -1,0 +1,166 @@
+ .encabezado {
+     padding-top: 20px;
+ }
+
+ .encabezado-contenedor {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 90%;
+     max-width: 1500px;
+     margin: 0 auto;
+ }
+
+ .logo {
+     font-weight: bold;
+     color: #5e5a5a;
+ }
+
+ .menu {
+     background-color: var(--color-base);
+     display: flex;
+     gap: 0;
+     border-radius: 30px;
+     box-shadow: 0 8px 24px var(--color-base);
+     overflow: hidden;
+
+ }
+
+ .menu-item {
+     padding: 15px 40px;
+     font-size: 14px;
+     color: #ffffff;
+     text-decoration: none;
+     transition: background 0.3s;
+     position: relative;
+ }
+
+
+
+ .menu-item:hover {
+     color: #ffffff;
+     background-color: var(--color-activo);
+     ;
+
+ }
+
+ .menu-item.activo {
+     background-color: var(--color-activo);
+     color: white;
+ }
+
+ /* Si existe un item NO activo con hover -->
+   el ACTIVO cambia temporalmente de color */
+ .menu:has(.menu-item:not(.activo):hover) .menu-item.activo {
+     background-color: #003a84;
+     color: white;
+ }
+
+
+ .btn-secundario {
+     padding: 15px 20px;
+     background-color: #ffffffa0;
+     text-decoration: none;
+     border-radius: 30px;
+     color: #4f4a45;
+     font-size: 14px;
+     border: #aca4a4a0 solid 1px;
+ }
+
+ .btn-secundario:hover {
+     background-color: #2a388d;
+     color: white;
+     box-shadow: 0 8px 24px #3f46aa;
+     transition: background 0.5s;
+
+ }
+
+ .btn-primario {
+     padding: 15px 20px;
+     background-color: #ff7125;
+     color: white;
+     text-decoration: none;
+     border-radius: 30px;
+     font-size: 14px;
+     box-shadow: 0 8px 24px #ff7125;
+ }
+
+ .btn-primario:hover {
+     opacity: 0.9;
+     background-color: #f15005;
+     box-shadow: 0 8px 24px #f15005;
+     transition: background 0.5s;
+
+
+ }
+
+ /* =========================================
+   Estilos para Tablets y Móviles (< 900px)
+   ========================================= */
+ /* Usamos 900px porque el menú parece ancho y podría romperse antes de llegar a modo móvil puro */
+
+ @media (max-width: 900px) {
+
+     /* 1. Contenedor Principal: Apilar elementos */
+     .encabezado-contenedor {
+         flex-direction: column;
+         gap: 20px;
+         /* Espacio entre Logo, Menú y Botones */
+         width: 95%;
+         /* Aprovechar más ancho en móviles */
+     }
+
+     /* 2. Ajuste del Menú (La "Cápsula") */
+     .menu {
+         width: 100%;
+         max-width: 100%;
+         /* Asegura que no desborde */
+
+         /* Truco para móviles: Si los items no caben, permite scroll horizontal suave */
+         overflow-x: auto;
+         justify-content: flex-start;
+         /* Alinea al inicio para permitir el scroll */
+
+         /* Ocultar la barra de scroll visualmente pero mantener la funcionalidad */
+         -ms-overflow-style: none;
+         /* IE and Edge */
+         scrollbar-width: none;
+         /* Firefox */
+
+         /* Relleno interno para que la sombra no se corte */
+         padding: 5px;
+         box-sizing: border-box;
+     }
+
+     /* Ocultar barra de scroll en Chrome/Safari/Opera */
+     .menu::-webkit-scrollbar {
+         display: none;
+     }
+
+     /* 3. Reducción drástica del padding de los items */
+     .menu-item {
+         padding: 12px 20px;
+         /* De 40px bajamos a 20px para ahorrar espacio */
+         font-size: 13px;
+         white-space: nowrap;
+         /* Evita que el texto del enlace se parta en dos líneas */
+         flex-shrink: 0;
+         /* Evita que los items se aplasten */
+     }
+
+     /* 4. Botones: Ancho completo para facilitar el toque (Touch target) */
+     .btn-primario,
+     .btn-secundario {
+         width: 100%;
+         display: block;
+         /* Asegura comportamiento de bloque */
+         text-align: center;
+         box-sizing: border-box;
+         /* Para que el padding no sume al 100% de ancho */
+         margin-bottom: 10px;
+         /* Separación si están uno sobre otro */
+     }
+
+     /* Si los botones están dentro de un contenedor div (recomendable), 
+       puedes aplicar flex-direction: column a ese contenedor también */
+ }

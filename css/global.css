@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color System */
+    --color-surface-light: #ede4da;
+    --color-surface-dark: #2e2e2e;
+    --color-text-light: #4f4a45;
+    --color-text-dark: #e0e0e0;
+    --color-heading-light: #333333;
+    --color-heading-dark: #ffffff;
+    --color-cta-primary: #3b5998;
+    --color-cta-primary-hover: #314a7e;
+    --color-base: #25327d;
+    --color-activo: #263fc8;
+    --radius: 30px;
+
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: rgba(245, 239, 233, 0.6);
+    color: var(--color-text-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface-light);
+}
+
+/* Background Gallery */
+.background-gallery {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    opacity: 0.5;
+    filter: blur(6px);
+    transform: scale(1.34);
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.gallery-column {
+    display: grid;
+    gap: 2rem;
+}
+
+.gallery-column:nth-child(1) {
+    margin-top: 2rem;
+}
+
+.gallery-column:nth-child(3) {
+    margin-top: 3rem;
+}
+
+.gallery-column:nth-child(5) {
+    margin-top: 1rem;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .gallery-column:nth-child(5) {
+        display: grid;
+    }
+}
+
+/* =========================================
+   Estilos para Móviles Puros (< 640px)
+   ========================================= */
+
+@media (max-width: 639px) {
+
+    /* 1. Ajuste del Contenedor Global */
+    .container {
+        /* Ya tiene padding-left/right: 1rem; del estilo base. */
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* 2. Galería de Fondo */
+    .gallery-grid {
+        /* Aseguramos la cuadrícula de 2 columnas para móviles */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        /* Reducimos el espaciado para que quepan */
+
+        /* Reducimos el factor de escala y el desenfoque para evitar problemas de rendimiento en dispositivos lentos */
+        transform: scale(1.1);
+        filter: blur(4px);
+    }
+
+    /* Eliminar la tercera columna en la vista de 2 columnas */
+    .gallery-column:nth-child(3) {
+        margin-top: 0;
+    }
+
+    /* Resetear las columnas que solo aparecen en desktop */
+    .gallery-column:nth-child(5) {
+        display: none;
+        /* Ocultamos la quinta columna que solo aparece en 1024px+ */
+    }
+
+    /* Reducir el tamaño de las fuentes y el padding de los botones si es necesario 
+       (Aunque los botones base se ven bien, pueden necesitar ajustes si se usan en layouts más complejos) */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================
+   Media Queries de Ancho Mínimo (Desktop-First)
+   ========================================= */
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        /* La regla que moviste desde dentro del selector */
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .gallery-grid {
+        /* La regla que moviste desde dentro del selector */
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .gallery-column:nth-child(5) {
+        display: grid;
+        margin-top: 1rem;
+        /* Aseguramos que se muestre en 1024px+ */
+    }
+}
